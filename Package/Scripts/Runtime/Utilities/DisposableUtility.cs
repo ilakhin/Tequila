@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System;
 using UnityEngine;
 
@@ -6,7 +5,7 @@ namespace Tequila.Utilities
 {
     public static class DisposableUtility
     {
-        public static bool TryDispose<T>([CanBeNull] ref T disposable)
+        public static bool TryDispose<T>(ref T disposable)
             where T : class, IDisposable
         {
             if (disposable == null)

@@ -1,11 +1,10 @@
-using JetBrains.Annotations;
 using System.Threading;
 
 namespace Tequila.Utilities
 {
     public static class CancellationTokenSourceUtility
     {
-        public static bool TryCancelAndDispose([CanBeNull] ref CancellationTokenSource cancellationTokenSource)
+        public static bool TryCancelAndDispose(ref CancellationTokenSource cancellationTokenSource)
         {
             if (cancellationTokenSource == null)
             {
@@ -20,7 +19,7 @@ namespace Tequila.Utilities
             return DisposableUtility.TryDispose(ref cancellationTokenSource);
         }
 
-        public static bool TryGetCancellationToken([CanBeNull] CancellationTokenSource cancellationTokenSource, out CancellationToken cancellationToken)
+        public static bool TryGetCancellationToken(CancellationTokenSource cancellationTokenSource, out CancellationToken cancellationToken)
         {
             if (cancellationTokenSource == null)
             {
