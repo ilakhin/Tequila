@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
@@ -48,6 +49,82 @@ namespace IL.Tequila
             }
 
             item = default;
+
+            return false;
+        }
+
+        public static bool TryGetFirst<T>(this IReadOnlyList<T> readOnlyList, Func<T, bool> selector, out T item)
+        {
+            for (int i = 0, count = readOnlyList.Count; i < count; i++)
+            {
+                if (!selector(readOnlyList[i]))
+                {
+                    continue;
+                }
+
+                item = readOnlyList[i];
+
+                return true;
+            }
+
+            item = default;
+
+            return false;
+        }
+
+        public static bool TryGetFirstIndexOf<T>(this IReadOnlyList<T> readOnlyList, Func<T, bool> selector, out int index)
+        {
+            for (int i = 0, count = readOnlyList.Count; i < count; i++)
+            {
+                if (!selector(readOnlyList[i]))
+                {
+                    continue;
+                }
+
+                index = i;
+
+                return true;
+            }
+
+            index = -1;
+
+            return false;
+        }
+
+        public static bool TryGetLast<T>(this IReadOnlyList<T> readOnlyList, Func<T, bool> selector, out T item)
+        {
+            for (var i = readOnlyList.Count - 1; i >= 0; i--)
+            {
+                if (!selector(readOnlyList[i]))
+                {
+                    continue;
+                }
+
+                item = readOnlyList[i];
+
+                return true;
+            }
+
+            item = default;
+
+            return false;
+        }
+
+        public static bool TryGetLastIndexOf<T>(this IReadOnlyList<T> readOnlyList, Func<T, bool> selector, out int index)
+        {
+            for (var i = readOnlyList.Count - 1; i >= 0; i--)
+            {
+                if (!selector(readOnlyList[i]))
+                {
+                    continue;
+                }
+
+                index = i;
+
+                return true;
+            }
+
+            index = -1;
 
             return false;
         }
