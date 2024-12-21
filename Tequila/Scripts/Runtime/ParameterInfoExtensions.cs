@@ -10,7 +10,7 @@ namespace IL.Tequila
         {
             if (!Attribute.IsDefined(parameterInfo, typeof(TAttribute)))
             {
-                attribute = default;
+                attribute = null;
 
                 return false;
             }
@@ -25,7 +25,7 @@ namespace IL.Tequila
         {
             if (!Attribute.IsDefined(parameterInfo, typeof(TAttribute), inherit))
             {
-                attribute = default;
+                attribute = null;
 
                 return false;
             }
