@@ -7,7 +7,7 @@ namespace IL.Tequila
 {
     public static class EnumerableExtensions
     {
-        public static bool AllNonAlloc<TSource, TState>(this IEnumerable<TSource> enumerable, TState state, Func<TSource, TState, bool> predicate)
+        public static bool AllExtra<TSource, TState>(this IEnumerable<TSource> enumerable, TState state, Func<TSource, TState, bool> predicate)
         {
             foreach (var source in enumerable)
             {
@@ -20,7 +20,7 @@ namespace IL.Tequila
             return true;
         }
 
-        public static bool AnyNonAlloc<TSource, TState>(this IEnumerable<TSource> enumerable, TState state, Func<TSource, TState, bool> predicate)
+        public static bool AnyExtra<TSource, TState>(this IEnumerable<TSource> enumerable, TState state, Func<TSource, TState, bool> predicate)
         {
             foreach (var source in enumerable)
             {
@@ -33,7 +33,7 @@ namespace IL.Tequila
             return false;
         }
 
-        public static IEnumerable<TResult> SelectNonAlloc<TSource, TState, TResult>(this IEnumerable<TSource> enumerable, TState state, Func<TSource, TState, TResult> selector)
+        public static IEnumerable<TResult> SelectExtra<TSource, TState, TResult>(this IEnumerable<TSource> enumerable, TState state, Func<TSource, TState, TResult> selector)
         {
             foreach (var source in enumerable)
             {
@@ -46,7 +46,7 @@ namespace IL.Tequila
             return enumerable.OrderBy(static _ => Random.value);
         }
 
-        public static IEnumerable<TSource> WhereNonAlloc<TSource, TState>(this IEnumerable<TSource> enumerable, TState state, Func<TSource, TState, bool> predicate)
+        public static IEnumerable<TSource> WhereExtra<TSource, TState>(this IEnumerable<TSource> enumerable, TState state, Func<TSource, TState, bool> predicate)
         {
             foreach (var source in enumerable)
             {
@@ -55,6 +55,45 @@ namespace IL.Tequila
                     yield return source;
                 }
             }
+        }
+
+        public static bool TryGetFirst<T>(this IEnumerable<T> enumerable, Func<T, bool> selector, out T item)
+        {
+            foreach (var currentItem in enumerable)
+            {
+                if (!selector(currentItem))
+                {
+                    continue;
+                }
+
+                item = currentItem;
+
+                return true;
+            }
+
+            item = default;
+
+            return false;
+        }
+
+        public static bool TryGetLast<T>(this IEnumerable<T> enumerable, Func<T, bool> selector, out T item)
+        {
+            var result = false;
+
+            foreach (var currentItem in enumerable)
+            {
+                if (!selector(currentItem))
+                {
+                    continue;
+                }
+
+                result = true;
+                item = currentItem;
+            }
+
+            item = default;
+
+            return result;
         }
     }
 }
