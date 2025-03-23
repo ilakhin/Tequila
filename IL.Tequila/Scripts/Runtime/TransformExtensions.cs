@@ -1,4 +1,6 @@
+#if IL_TEQUILA_ZSTRING_SUPPORT
 using Cysharp.Text;
+#endif
 using UnityEngine;
 
 namespace IL.Tequila
