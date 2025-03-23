@@ -1,5 +1,5 @@
 {
-    "name": "Tequila.Editor",
+    "name": "IL.Tequila.Editor",
     "rootNamespace": "IL.Tequila",
     "references": [
         "GUID:fa6a113bbf1f04c0aa31889714cb86d6"
