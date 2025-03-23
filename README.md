@@ -1,2 +1,2 @@
 # Tequila
-Unity useful tools.
+Useful tools for Unity.
