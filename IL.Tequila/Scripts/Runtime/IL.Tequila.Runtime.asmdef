@@ -15,19 +15,14 @@
     "defineConstraints": [],
     "versionDefines": [
         {
-            "name": "com.cysharp.unitask",
-            "expression": "",
-            "define": "IL_TEQUILA_UNITASK_SUPPORT"
+            "name": "com.cysharp.zstring",
+            "expression": "2.3.0",
+            "define": "IL_TEQUILA_ZSTRING_SUPPORT"
         },
         {
             "name": "com.unity.localization",
-            "expression": "",
+            "expression": "1.5.2",
             "define": "IL_TEQUILA_LOCALIZATION_SUPPORT"
-        },
-        {
-            "name": "com.cysharp.zstring",
-            "expression": "",
-            "define": "IL_TEQUILA_ZSTRING_SUPPORT"
         }
     ],
     "noEngineReferences": false
